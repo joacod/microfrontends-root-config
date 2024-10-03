@@ -6,7 +6,7 @@
     "test": "cross-env BABEL_ENV=test jest --passWithNoTests",
     "format": "prettier --write .",
     "check-format": "prettier --check .",
-    "build": "concurrently npm:build:*",
+    "build": "concurrently npm:build:* && sh copy-importmap.sh",
     "build:webpack": "webpack --mode=production",
     "build:types": "tsc"
   },
