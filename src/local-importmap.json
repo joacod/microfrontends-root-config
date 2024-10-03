@@ -1,0 +1,7 @@
+{
+  "imports": {
+    "@joacod/root-config": "/joacod-root-config.js",
+    "@joacod/microfrontends-react": "//localhost:9001/joacod-microfrontends-react.js",
+    "@joacod/microfrontends-utility": "//localhost:9004/joacod-microfrontends-utility.js"
+  }
+}

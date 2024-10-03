@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Root Config</title>
+  <title>Microfrontends | joacod</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
 
   <!--
     Remove this if you only support browsers that support async/await.
@@ -17,7 +18,11 @@
     This CSP allows any SSL-enabled host and for arbitrary eval(), but you should limit these directives further to increase your app's security.
     Learn more about CSP policies at https://content-security-policy.com/#directive
   -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: localhost:*; script-src 'unsafe-inline' 'unsafe-eval' https: localhost:*; connect-src https: localhost:* ws://localhost:*; style-src 'unsafe-inline' https:; object-src 'none';">
+  <!-- TODO: Remove http and only accept https -->
+  <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self' data: https: http: localhost:*; script-src 'unsafe-inline' 'unsafe-eval' https: http: localhost:*; connect-src https: http: localhost:* ws://localhost:*; style-src 'unsafe-inline' https:; object-src 'none';"
+  />
   <meta name="importmap-type" content="systemjs-importmap" />
   <!-- If you wish to turn off import-map-overrides for specific environments (prod), uncomment the line below -->
   <!-- More info at https://github.com/joeldenning/import-map-overrides/blob/master/docs/configuration.md#domain-list -->
@@ -41,17 +46,10 @@
   <link rel="preload" href="https://cdn.jsdelivr.net/npm/single-spa@5.9.0/lib/system/single-spa.min.js" as="script">
 
   <!-- Add your organization's prod import map URL to this script's src  -->
-  <!-- <script type="systemjs-importmap" src="/importmap.json"></script> -->
+  <script type="systemjs-importmap" src="/importmap.json"></script>
 
   <% if (isLocal) { %>
-  <script type="systemjs-importmap">
-    {
-      "imports": {
-        "@single-spa/welcome": "https://unpkg.com/single-spa-welcome/dist/single-spa-welcome.js",
-        "@joacod/root-config": "//localhost:9000/joacod-root-config.js"
-      }
-    }
-  </script>
+    <script type="systemjs-importmap" src="/local-importmap.json"></script>
   <% } %>
 
   <!--
@@ -69,6 +67,21 @@
   <script src="https://cdn.jsdelivr.net/npm/systemjs@6.8.3/dist/extras/amd.min.js"></script>
   <% } %>
 
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    body {
+      font-family: Arial, Tahoma, Serif;
+      color: #263238;
+    }
+
+    .main {
+      padding: 3rem 4rem;
+    }
+  </style>
 </head>
 <body>
   <noscript>
