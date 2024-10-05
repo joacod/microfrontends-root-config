@@ -11,6 +11,13 @@
       <application name="@joacod/microfrontends-react"></application>
     </div>
 
-    <main class="main"></main>
+    <main class="main">
+      <route default>
+        <application name="@joacod/microfrontends-vue"></application>
+      </route>
+      <route path="checkout">
+        <application name="@joacod/microfrontends-angular"></application>
+      </route>
+    </main>
   </div>
 </single-spa-router>
